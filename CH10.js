@@ -20,7 +20,7 @@ rl.on('line', (line) => {
           text += mysplit[i].substring(1, mysplit[i].length) + mysplit[i].slice(0, 1) + 'nyo' + ' ';
         }
       }
-      console.log(text);
+      console.log('hasil konversi: ' + text);
       break;
   }
   rl.prompt();
