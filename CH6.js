@@ -15,4 +15,4 @@ mysplit[i].startsWith('u') || mysplit[i].startsWith('e') || mysplit[i].startsWit
 return text;
 
 }
-console.log(sentencesManipulation('aku pergi ke pasar bersama ibu'))
+console.log(sentencesManipulation('ibu pergi ke pasar bersama aku'))

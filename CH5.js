@@ -14,3 +14,7 @@ if (word.startsWith(vokal)) {
 
 console.log(stringManipulation('ayam'));
 console.log(stringManipulation('bebek'));
+
+//solman
+
+//function
