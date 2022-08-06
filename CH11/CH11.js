@@ -26,6 +26,10 @@ rl.on('line', (line) => {
     case line:
       if (count == newanswer.length - 1) {
         rl.close();
+        if (line == newanswer[count]['term']) {
+          console.log('Hore Anda menang !');
+          process.exit(count++);
+        }
       }
 
       if (line == newanswer[count]['term']) {
@@ -38,7 +42,4 @@ rl.on('line', (line) => {
         console.log('Wkwkwk, Anda belum beruntung');
       }
   }
-}).on('close', () => {
-  console.log('Hore Anda menang !');
-  process.exit(0);
 });
