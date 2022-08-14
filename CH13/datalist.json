@@ -1,1 +1,1 @@
-[{"command":"[x]","kerjaan":"saya akan memasak","tag":"masak,sayur"},{"command":"[x]","kerjaan":"saya akan menikah","tag":""},{"command":"[]","kerjaan":"mengantarkan makanan ke mertua","tag":""},{"command":"[]","kerjaan":"jalan-jalan","tag":""}]
+[{"command":"[x]","kerjaan":"saya akan memasak","tag":["masak","sayur"]},{"command":"[x]","kerjaan":"mengantarkan makanan ke mertua","tag":""},{"command":"[]","kerjaan":"jalan-jalan","tag":""}]
