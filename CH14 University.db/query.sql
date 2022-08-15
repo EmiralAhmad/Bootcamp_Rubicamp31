@@ -38,7 +38,7 @@ VALUES ('1201A','Emiral Ahmad','Akuntansi','Joglo, Cianjur Jawa Barat','12011'),
 CREATE TABLE Mata_Kuliah (
     Id_MataKuliah varchar(15) not null primary key,
     Nama varchar(15) not null,
-    SKS int(5),
+    SKS int(5)
 );
 
 INSERT INTO Mata_Kuliah 
