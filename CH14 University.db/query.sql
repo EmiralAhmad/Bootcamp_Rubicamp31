@@ -1,10 +1,11 @@
 CREATE TABLE Dosen (
     Nip varchar(15) not null primary key,
-    Nama varchar(30) not null
+    Nama varchar(30) not null,
+    NamaMata_Kuliah(30) not null
 );
 
 INSERT INTO Dosen
-VALUES ('X001','Dudung Jamaludin'),('X002','Abdul Aziz'),('X003','Muhammad Tazakka');
+VALUES ('X001','Dudung Jamaludin','Aqidah'),('X002','Abdul Aziz','Fiqih'),('X003','Muhammad Tazakka','Ushul Fiqih');
 
 CREATE TABLE Jurusan ( 
     ID_Jurusan varchar(15) not null primary key,
