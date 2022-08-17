@@ -39,12 +39,11 @@ SELECT * FROM Mahasiswa
 ORDER BY Umur ASC;
 
 --8 MAHASISWA YANG MEMILIKI KONTRAK MATA KULIAH YANG DIULANG
-SELECT Mahasiswa.Nama_Mahasiswa,Kontrak.Nilai, Kontrak.Id_MataKuliah, Mata_Kuliah.Nama, Dosen.Nama, Kelas.Nip
+SELECT Mahasiswa.Nama_Mahasiswa,Kontrak.Nilai, Mata_Kuliah.Nama, Dosen.Nama, Kelas.Nip
 FROM Mahasiswa
 INNER JOIN Kontrak ON Mahasiswa.Nim=Kontrak.Nim
 INNER JOIN Mata_Kuliah ON Kontrak.Id_MataKuliah=Mata_Kuliah.Id_MataKuliah
 INNER JOIN Dosen ON Dosen.Nip=Kelas.Nip
-INNER JOIN Kelas ON Mahasiswa.Nim=Kelas.Nim
 WHERE Kontrak.Nilai='E' OR Kontrak.Nilai='D';
 
 --9 GABUNGAN MAHASISWA DOSEN DAN JURUSAN
