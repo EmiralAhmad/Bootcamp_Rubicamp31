@@ -28,20 +28,23 @@ INNER JOIN Mata_Kuliah ON Kontrak.Id_MataKuliah=Mata_Kuliah.Id_MataKuliah)
 WHERE Mata_Kuliah.Nama='Data Mining';
 
 --6 JUMLAH MAHASISWA UNTUK SETIAP DOSEN 
-SELECT COUNT(Mahasiswa.Nim), Kelas.Nim, Kelas.Nip,Dosen.Nama, Dosen.NamaMata_Kuliah
+SELECT COUNT(Mahasiswa.Nim),Kelas.Nim, Kelas.Nip,Dosen.Nama, Dosen.NamaMata_Kuliah
 FROM (( Mahasiswa
 INNER JOIn Kelas ON Mahasiswa.Nim=Kelas.Nim)
-INNER JOIN Dosen ON Dosen.Nip=Kelas.Nip);
+INNER JOIN Dosen ON Dosen.Nip=Kelas.Nip)
+GROUP BY Dosen.Nama;
 
 --7 MAHASISWA BERDASARKAN UMUR 
 SELECT * FROM Mahasiswa
 ORDER BY Umur ASC;
 
---8 KONTRAK MATA KULIAH YANG DIULANG
-SELECT Mahasiswa.Nama_Mahasiswa,Kontrak.Nim, Kontrak.Id_MataKuliah, Mata_Kuliah.Nama
-FROM ((Mahasiswa
-INNER JOIN Kontrak ON Mahasiswa.Nim=Kontrak.Nim)
-INNER JOIN Mata_Kuliah ON Kontrak.Id_MataKuliah=Mata_Kuliah.Id_MataKuliah)
+--8 MAHASISWA YANG MEMILIKI KONTRAK MATA KULIAH YANG DIULANG
+SELECT Mahasiswa.Nama_Mahasiswa,Kontrak.Nilai, Kontrak.Id_MataKuliah, Mata_Kuliah.Nama, Dosen.Nama, Kelas.Nip
+FROM Mahasiswa
+INNER JOIN Kontrak ON Mahasiswa.Nim=Kontrak.Nim
+INNER JOIN Mata_Kuliah ON Kontrak.Id_MataKuliah=Mata_Kuliah.Id_MataKuliah
+INNER JOIN Dosen ON Dosen.Nip=Kelas.Nip
+INNER JOIN Kelas ON Mahasiswa.Nim=Kelas.Nim
 WHERE Kontrak.Nilai='E' OR Kontrak.Nilai='D';
 
 --9 GABUNGAN MAHASISWA DOSEN DAN JURUSAN
