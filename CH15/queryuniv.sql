@@ -1,7 +1,6 @@
 CREATE TABLE Dosen (
     Nip varchar(15) not null primary key,
     Nama varchar(30) not null,
-    NamaMata_Kuliah varchar (15) not null
 );
 
 INSERT INTO Dosen
@@ -24,27 +23,27 @@ VALUES ('12011','Akuntansi'),('12012','Manajemen'),('12013','Ekonomi'),('12014',
 
 CREATE TABLE Kelas (
     Nama_Kelas varchar(15) not null,
-    Nim varchar (15) not null,
     Nip varchar(15) not null, 
+    Id_MataKuliah varchar(15) not null
     foreign key (Nip) references Dosen(Nip)
-    foreign key (Nim) references Mahasiswa(Nim)
+    foreign key (Id_MataKuliah) references Mata_Kuliah(Id_MataKuliah)
 );
 
 INSERT INTO Kelas
 VALUES 
-('1201A','X001'),
-('1201A','X002'),
-('1201A','X003'),
-('1201A','X004'),
-('1201A','X005'),
-('1201A','X006'),
-('1201A','X007'),
-('1201B','X002'),
-('1201C','X003'),
-('1201D','X003'),
-('1201E','X004'),
-('1201F','X006'),
-('1201G','X007');
+('A','X001','MK01'),
+('B','X002','MK01'),
+('C','X003','MK01'),
+('D','X004','MK01'),
+('E','X005','MK02'),
+('F','X006','MK02'),
+('G','X007','MK03'),
+('H','X002','MK03'),
+('I','X003','MK04'),
+('J','X003','MK04'),
+('K','X004','MK05'),
+('L','X006','MK06'),
+('M','X007','MK07');
 
 CREATE TABLE Mahasiswa (
     Nim varchar(15) not null primary key,
