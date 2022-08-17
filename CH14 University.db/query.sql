@@ -1,11 +1,19 @@
 CREATE TABLE Dosen (
     Nip varchar(15) not null primary key,
     Nama varchar(30) not null,
+<<<<<<< HEAD
     Id_MataKuliah varchar(15) not null, foreign key (Id_MataKuliah) references Mata_Kuliah(Id_MataKuliah)
 );
 
 INSERT INTO Dosen
 VALUES ('X001','Dudung Jamaludin','MK01'),('X002','Abdul Aziz','MK02'),('X003','Muhammad Tazakka','MK03');
+=======
+    NamaMata_Kuliah(30) not null
+);
+
+INSERT INTO Dosen
+VALUES ('X001','Dudung Jamaludin','Aqidah'),('X002','Abdul Aziz','Fiqih'),('X003','Muhammad Tazakka','Ushul Fiqih');
+>>>>>>> 5db4b850915bfdf98382629a845b2224d5477381
 
 CREATE TABLE Jurusan ( 
     ID_Jurusan varchar(15) not null primary key,
@@ -39,7 +47,11 @@ VALUES ('1201A','Emiral Ahmad','Akuntansi','Joglo, Cianjur Jawa Barat','12011'),
 CREATE TABLE Mata_Kuliah (
     Id_MataKuliah varchar(15) not null primary key,
     Nama varchar(15) not null,
+<<<<<<< HEAD
     SKS int(5),
+=======
+    SKS int(5)
+>>>>>>> 5db4b850915bfdf98382629a845b2224d5477381
 );
 
 INSERT INTO Mata_Kuliah 
