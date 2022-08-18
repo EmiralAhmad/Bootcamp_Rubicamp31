@@ -29,7 +29,7 @@ INNER JOIN Mata_Kuliah ON KRS.Id_MataKuliah=Mata_Kuliah.Id_MataKuliah)
 WHERE Mata_Kuliah.Nama='Data Mining';
 
 --6 JUMLAH MAHASISWA UNTUK SETIAP DOSEN 
-SELECT Dosen.Nama, KRS.Nip, COUNT(Mahasiswa.Nama_Mahasiswa)
+SELECT Dosen.Nama, KRS.Nip, COUNT(DISTINCT Mahasiswa.Nama_Mahasiswa)
 FROM Dosen
 INNER JOIN Mahasiswa ON Mahasiswa.Nim=KRS.Nim
 INNER JOIN KRS ON Dosen.Nip=KRS.Nip

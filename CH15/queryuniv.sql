@@ -59,7 +59,7 @@ VALUES
 ('MK07','Olahraga',3);
 
 CREATE TABLE KRS (
-    ilai varchar(5) not null,
+    Nilai varchar(5) not null,
     Nip varchar(15) not null,
     Nim varchar(15) not null,
     Id_MataKuliah varchar(15) not null,
@@ -87,4 +87,9 @@ VALUES
 ('E','X006','1201G','MK06'),
 ('A','X006','1201D','MK06'),
 ('B','X004','1201B','MK07'),
-('A','X004','1201C','MK07');
+('A','X004','1201C','MK07'),
+('A','X001','1201D','MK01'),
+('A','X001','1201D','MK02'),
+('A','X001','1201D','MK03'),
+('A','X001','1201D','MK04'),
+('A','X001','1201D','MK05');
