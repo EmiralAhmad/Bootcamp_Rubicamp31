@@ -1,17 +1,17 @@
 CREATE TABLE Dosen (
     Nip varchar(15) not null primary key,
-    Nama varchar(30) not null,
+    Nama varchar(30) not null
 );
 
 INSERT INTO Dosen
 VALUES 
-('X001','Dudung Jamaludin','Aqidah'),
-('X002','Abdul Aziz','Fiqih'),
-('X003','Muhammad Tazakka','Ushul Fiqih'),
-('X004','Himawan','Data Mining'),
-('X005','Fernanda','Programming'),
-('X006','Rahmat Fajar','Design'),
-('X007','Chairil Anwar','Olahraga');
+('X001','Dudung Jamaludin'),
+('X002','Abdul Aziz'),
+('X003','Muhammad Tazakka'),
+('X004','Himawan'),
+('X005','Fernanda'),
+('X006','Rahmat Fajar'),
+('X007','Chairil Anwar');
 
 CREATE TABLE Jurusan ( 
     ID_Jurusan varchar(15) not null primary key,
@@ -21,29 +21,6 @@ CREATE TABLE Jurusan (
 INSERT INTO Jurusan
 VALUES ('12011','Akuntansi'),('12012','Manajemen'),('12013','Ekonomi'),('12014','Bisnis Digital');
 
-CREATE TABLE Kelas (
-    Nama_Kelas varchar(15) not null,
-    Nip varchar(15) not null, 
-    Id_MataKuliah varchar(15) not null
-    foreign key (Nip) references Dosen(Nip)
-    foreign key (Id_MataKuliah) references Mata_Kuliah(Id_MataKuliah)
-);
-
-INSERT INTO Kelas
-VALUES 
-('A','X001','MK01'),
-('B','X002','MK01'),
-('C','X003','MK01'),
-('D','X004','MK01'),
-('E','X005','MK02'),
-('F','X006','MK02'),
-('G','X007','MK03'),
-('H','X002','MK03'),
-('I','X003','MK04'),
-('J','X003','MK04'),
-('K','X004','MK05'),
-('L','X006','MK06'),
-('M','X007','MK07');
 
 CREATE TABLE Mahasiswa (
     Nim varchar(15) not null primary key,
@@ -51,7 +28,8 @@ CREATE TABLE Mahasiswa (
     Umur int(3) not null,
     Jurusan varchar(15) not null,
     Alamat text,
-    ID_Jurusan varchar (15) not null, foreign key (ID_Jurusan) references Jurusan(ID_Jurusan)
+    ID_Jurusan varchar (15) not null, 
+    foreign key (ID_Jurusan) references Jurusan(ID_Jurusan)
 );
 
 INSERT INTO Mahasiswa 
@@ -80,29 +58,34 @@ VALUES
 ('MK06','Design',3),
 ('MK07','Olahraga',3);
 
-CREATE TABLE Kontrak (
-    Nilai varchar (5) not null,
-    Nim varchar (15) not null,
-    Id_MataKuliah varchar(15) not null, 
+CREATE TABLE KRS (
+    Nama_Kelas varchar(15) not null,
+    Nilai varchar(5) not null,
+    Nip varchar(15) not null,
+    Nim varchar(15) not null,
+    Id_MataKuliah varchar(15) not null,
+    foreign key (Nip) references Dosen(Nip)
     foreign key (Nim) references Mahasiswa(Nim)
-    foreign key (Id_MataKuliah) references Mata_Kuliah(Id_MataKuliah)
+    foreign key (Id_MataKuliah) references Mata_Kuliah(Id_MataKuliah)       
 );
 
-INSERT INTO Kontrak
-VALUES 
-('A','1201A','MK01'), 
-('A','1201B','MK02'), 
-('A','1201C','MK03'),
-('B','1201D','MK04'),
-('A','1201A','MK02'),
-('A','1201A','MK03'),
-('A','1201A','MK04'),
-('A','1201A','MK05'),
-('A','1201A','MK06'),
-('A','1201A','MK07'),
-('B','1201B','MK04'),
-('B','1201B','MK07'),
-('C','1201C','MK01'),
-('D','1201C','MK02'),
-('E','1201C','MK07'),
-('A','1201E','MK04');
+INSERT INTO KRS
+VALUES
+('A1','A','X001','1201A','MK01'),
+('B1','A','X002','1201B','MK01'),
+('B1','A','X002','1201C','MK01'),
+('D1','A','X001','1201D','MK01'),
+('E1','B','X003','1201A','MK02'),
+('E1','B','X003','1201B','MK02'),
+('C1','B','X007','1201D','MK03'),
+('C1','C','X007','1201E','MK03'),
+('F1','C','X005','1201F','MK04'),
+('F1','C','X005','1201F','MK03'),
+('D1','D','X001','1201F','MK01'),
+('D1','D','X003','1201F','MK02'),
+('G1','D','X004','1201G','MK05'),
+('G1','E','X004','1201B','MK05'),
+('H1','E','X006','1201G','MK06'),
+('H1','A','X006','1201D','MK06'),
+('I1','B','X004','1201B','MK07'),
+('I1','A','X004','1201C','MK07');
