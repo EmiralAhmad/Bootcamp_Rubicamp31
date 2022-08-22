@@ -74,12 +74,11 @@ class CarFactory {
     this.time = 1.5;
     this.vehicle = [];
   }
-  production() {
-    this.vehicle.push()
+  production(v) {
+    this.vehicle.push(v)
     const production = Math.round(Math.random(this.machinehour / this.time)) * 20;
     console.log(`This factory ${this.name} have ${production} production capacity in this month`);
   }
 }
 const toyota = new CarFactory('Toyota');
-toyota.production(agya);
-toyota.production(camry);
+const total = toyota.production(agya) + toyota.production(camry);
