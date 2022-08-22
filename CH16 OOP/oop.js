@@ -8,8 +8,6 @@ class Tyre {
   }
 }
 
-// const tyre = new Tyre(6, 'Dunlop');
-
 class Car {
   window;
   chair;
@@ -36,13 +34,13 @@ class Camry extends Car {
     this.year = 2015;
     this.guarantee = Math.random();
   }
-  warranty() {
-    const warranty = Math.round(this.year + this.guarantee);
-    console.log(`This car ${this.model} have warranty till ${warranty} `);
-  }
+//   warranty() {
+//     const warranty = Math.round(this.year + this.guarantee);
+//     console.log(`This car ${this.model} have warranty till ${warranty} `);
+//   }
 }
-const camry = new Camry('Camry');
-camry.warranty();
+// const camry = new Camry('Camry');
+// camry.warranty();
 
 class Agya extends Car {
   model;
@@ -55,13 +53,13 @@ class Agya extends Car {
     this.year = 2015;
     this.guarantee = Math.random();
   }
-  warranty() {
-    const warranty = Math.round(this.year + this.guarantee);
-    console.log(`This car ${this.model} have warranty till ${warranty} `);
-  }
+//   warranty() {
+//     const warranty = Math.round(this.year + this.guarantee);
+//     console.log(`This car ${this.model} have warranty till ${warranty} `);
+//   }
 }
-const agya = new Agya('Agya');
-agya.warranty();
+// const agya = new Agya('Agya');
+// agya.warranty();
 
 class CarFactory {
   name;
@@ -74,11 +72,27 @@ class CarFactory {
     this.time = 1.5;
     this.vehicle = [];
   }
-  production(v) {
-    this.vehicle.push(v)
-    const production = Math.round(Math.random(this.machinehour / this.time)) * 20;
+  production() {
+    for (let i= 0; i < Math.round(Math.random() * 10); i++) {
+        const agya = new Agya();
+        const camry = new Camry();
+        this.vehicle.push(agya,camry)
+    }
+    const production = Math.round(Math.random(this.machinehour / this.time) * 10) * 20;  
     console.log(`This factory ${this.name} have ${production} production capacity in this month`);
+    console.log(`This month have ${this.vehicle.length} car`); 
+  }
+  warranty(){
+    for (let i = 0; i < Math.round(Math.random() * 10); i++) {
+        if(this.vehicle.guarantee = Agya) {
+        }
+        if(this.vehicle.guarantee = Camry) {
+        }
+    }
+    console.log(`This car agya have warranty ${Math.round(Math.random(this.year + this.guarantee))} year`);
+    console.log(`This car camry have warranty ${Math.round(Math.random(this.year + this.guarantee))} year`);
   }
 }
 const toyota = new CarFactory('Toyota');
-const total = toyota.production(agya) + toyota.production(camry);
+toyota.production();
+toyota.warranty();
