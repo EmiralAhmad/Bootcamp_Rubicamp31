@@ -75,15 +75,11 @@ class CarFactory {
     this.vehicle = [];
   }
   production() {
-    
+    this.vehicle.push()
     const production = Math.round(Math.random(this.machinehour / this.time)) * 20;
     console.log(`This factory ${this.name} have ${production} production capacity in this month`);
   }
-  setvehicle(v) {
-    this.vehicle.push(v);
-  }
 }
-const toyota = new CarFactory('Toyota', '2022');
-toyota.production();
-toyota.setvehicle(agya);
-toyota.setvehicle(camry);
+const toyota = new CarFactory('Toyota');
+toyota.production(agya);
+toyota.production(camry);
