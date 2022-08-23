@@ -1,3 +1,13 @@
+function uuid() {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
+
+var userID = uuid(); //something like: "ec0c22fa-f909-48da-92cb-db17ecdb91c5"
+
 class Tyre {
   size;
   type;
@@ -27,17 +37,19 @@ class Camry extends Car {
   model;
   year;
   guarantee;
+  userID;
 
-  constructor(model) {
+  constructor() {
     super(4, 4, 4, new Tyre(6, 'Dunlop'));
-    this.model = model;
+    this.model = "Camry";
     this.year = 2015;
-    this.guarantee = Math.random();
+    this.guarantee = Math.random() * 10;
+    this.userID = userID
   }
-//   warranty() {
-//     const warranty = Math.round(this.year + this.guarantee);
-//     console.log(`This car ${this.model} have warranty till ${warranty} `);
-//   }
+  warranty() {
+  const warranty = Math.round(this.year + this.guarantee);
+  console.log(`This car ${this.model} have warranty till ${warranty} `);
+  }
 }
 // const camry = new Camry('Camry');
 // camry.warranty();
@@ -46,17 +58,19 @@ class Agya extends Car {
   model;
   year;
   guarantee;
+  userID
 
-  constructor(model) {
+  constructor() {
     super(4, 4, 4, new Tyre(4, 'Bridgestone'));
-    this.model = model;
+    this.model = "Agya";
     this.year = 2015;
-    this.guarantee = Math.random();
+    this.guarantee = Math.random() * 10;
+    this.userID = userID
   }
-//   warranty() {
-//     const warranty = Math.round(this.year + this.guarantee);
-//     console.log(`This car ${this.model} have warranty till ${warranty} `);
-//   }
+    warranty() {
+      const warranty = Math.round(this.year + this.guarantee);
+      console.log(`This car ${this.model} have warranty till ${warranty} `);
+    }
 }
 // const agya = new Agya('Agya');
 // agya.warranty();
@@ -73,24 +87,24 @@ class CarFactory {
     this.vehicle = [];
   }
   production() {
-    for (let i= 0; i < Math.round(Math.random() * 10); i++) {
-        const agya = new Agya();
-        const camry = new Camry();
-        this.vehicle.push(agya,camry)
-    }
-    const production = Math.round(Math.random(this.machinehour / this.time) * 10) * 20;  
-    console.log(`This factory ${this.name} have ${production} production capacity in this month`);
-    console.log(`This month have ${this.vehicle.length} car`); 
-  }
-  warranty(){
     for (let i = 0; i < Math.round(Math.random() * 10); i++) {
-        if(this.vehicle.guarantee = Agya) {
-        }
-        if(this.vehicle.guarantee = Camry) {
-        }
+      const agya = new Agya();
+      const camry = new Camry();
+      this.vehicle.push(agya, camry);
     }
-    console.log(`This car agya have warranty ${Math.round(Math.random(this.year + this.guarantee))} year`);
-    console.log(`This car camry have warranty ${Math.round(Math.random(this.year + this.guarantee))} year`);
+    const production = Math.round(Math.random(this.machinehour / this.time) * 10) * 20;
+    console.log(`This factory ${this.name} have ${production} production capacity in this month`);
+    console.log(`This month have ${this.vehicle.length} car`);
+  }
+  warranty() {
+    for (let i = 0; i < Math.round(Math.random() * 4); i++) {
+      const agya = new Agya()
+      const camry = new Camry()
+      const camryWarranty = Math.round(camry.year + camry.guarantee)
+      const agyaWarranty = Math.round(agya.year + agya.guarantee)
+      console.log(`This ${camry.model} ${camry.userID} have warranty till ${camryWarranty}`);
+      console.log(`This ${agya.model} ${agya.userID} have warranty till ${agyaWarranty}`)
+    }
   }
 }
 const toyota = new CarFactory('Toyota');
