@@ -67,7 +67,7 @@ class Agya extends Car {
     this.guarantee = Math.random() * 10;
     this.userID = userID
   }
-    warranty() {
+    warranty(year) {
       const warranty = Math.round(this.year + this.guarantee);
       console.log(`This car ${this.model} have warranty till ${warranty} `);
     }
@@ -96,17 +96,22 @@ class CarFactory {
     console.log(`This factory ${this.name} have ${production} production capacity in this month`);
     console.log(`This month have ${this.vehicle.length} car`);
   }
-  warranty() {
-    for (let i = 0; i < Math.round(Math.random() * 4); i++) {
-      const agya = new Agya()
-      const camry = new Camry()
-      const camryWarranty = Math.round(camry.year + camry.guarantee)
-      const agyaWarranty = Math.round(agya.year + agya.guarantee)
-      console.log(`This ${camry.model} ${camry.userID} have warranty till ${camryWarranty}`);
-      console.log(`This ${agya.model} ${agya.userID} have warranty till ${agyaWarranty}`)
+  warranty(year) {
+    for (let i = 0; i < this.vehicle.length; i++) {
+      const Warrantylife = Math.round(this.vehicle[i].year + this.vehicle[i].guarantee);
+      // console.log(`This ${camry.model} ${camry.userID} have warranty till ${camryWarranty}`);
+      // console.log(`This ${agya.model} ${agya.userID} have warranty till ${agyaWarranty}`);
+      if(year > Warrantylife) {
+        console.log('Warranty is expired');
+      } else {
+        console.log(`This ${this.vehicle[i].model} ${this.vehicle[i].userID} have warranty till ${Warrantylife}`);
+      }
+
+      
     }
   }
 }
+
 const toyota = new CarFactory('Toyota');
 toyota.production();
-toyota.warranty();
+toyota.warranty(2016);
