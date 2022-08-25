@@ -7,7 +7,7 @@ calculator.numberold = 7
 console.log(`nilai sekarang : ${calculator.numberold}`)
 calculator.multiply(2).multiply(Pi).result();
 calculator.numberold = 7;
-calculator.root().multiply(Pi).result();
+calculator.square().multiply(Pi).result();
 calculator.numberold = 4;
 calculator.exponent(3).result();
 calculator.root().result();
