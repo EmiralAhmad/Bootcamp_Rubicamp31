@@ -1,7 +1,6 @@
 export const Pi = 22/7 ;
-export default class Calculator {
+export default class MesinHitung {
     numberold
-    numbernew
     constructor(){
         this.numberold = 1;
     }
@@ -38,7 +37,7 @@ export default class Calculator {
     }
 
     exponent() {
-        this.numberold **= number
+        this.numberold = Math.pow(this.numberold, 3)
         return this;
     }
 
