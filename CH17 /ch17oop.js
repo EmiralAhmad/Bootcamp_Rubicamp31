@@ -4,7 +4,6 @@ export default class Calculator {
     numbernew
     constructor(){
         this.numberold = 1;
-        this.numbernew = this.numberold;
     }
 
     initialNumber(numberold) {
@@ -27,6 +26,10 @@ export default class Calculator {
 
     divide(number) {
         this.numberold /= number
+    }
+
+    square() {
+        this.numberold = Math.pow(this.numberold, 2)
     }
 
     root() {
