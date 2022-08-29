@@ -12,7 +12,7 @@ class Menu {
     console.log('[2] Dosen');
     console.log('[3] Jurusan');
     console.log('[4] Mata Kuliah');
-    console.log('[5] SKS');
+    console.log('[5] KRS');
     console.log('[6] Keluar');
     Interface.readline();
   }
@@ -114,8 +114,8 @@ class Mahasiswa {
         rl.question('Nama_Mahasiswa :', (Nama_Mahasiswa) => {
           rl.question('Umur :', (Umur) => {
             rl.question('Jurusan :', (Jurusan) => {
-              rl.question('Alamat :', (Alamat) => {
-                rl.question('ID_Jurusan :', (ID_Jurusan) => {
+              rl.question('ID_Jurusan :', (ID_Jurusan) => {
+                rl.question('Alamat :', (Alamat) => {
                   db.get(addMahasiswa,[Nim,Nama_Mahasiswa,Umur,Jurusan,Alamat,ID_Jurusan], (err) => {
                     if (err) {
                       throw err
@@ -377,7 +377,7 @@ class KRS {
         throw err;
       }
       rows.forEach((KRS) => {
-        table.push([KRS.Nilai, KRS.Nip, KRS.Nim, KRS.Id_MataKuliah]);
+        table.push([KRS.Nip, KRS.Nim, KRS.Id_MataKuliah]);
       });
       console.log(table.toString());
       console.log('=================================');
@@ -385,9 +385,9 @@ class KRS {
     });
   }
   static search() {
-    const searchKRS = `SELECT * FROM KRS WHERE KRS.Id_MataKuliah = ?`;
+    const searchKRS = `SELECT * FROM KRS WHERE KRS.Nim = ?`;
     console.log('=================================');
-    rl.question('Masukan Id Mata Kuliah:', (userInput) => {
+    rl.question('Masukan Nim :', (userInput) => {
       db.get(searchKRS),
         [userInput],
         (err, KRS) => {
@@ -395,10 +395,10 @@ class KRS {
             throw err;
           }
           if (KRS) {
-            console.log(`=================================\nMata Kuliah details\nNilai : ${KRS.Nilai} \nNip : ${KRS.Nip} \nNim: ${KRS.Nim} \nId_MataKuliah: ${KRS.Id_MataKuliah}`);
+            console.log(`=================================\nMata Kuliah details\nNim : ${KRS.Nim} \nNip: ${KRS.Nip} \nId_MataKuliah: ${KRS.Id_MataKuliah}`);
           } else {
             console.log('=================================');
-            console.log(`Mata Kuliah dengan ID Mata Kuliah ${userInput} tidak terdaftar`);
+            console.log(`Mata Kuliah dengan Nim ${userInput} tidak terdaftar`);
           }
           console.log('=================================');
           Menu.Menu_KRS();
@@ -409,9 +409,10 @@ class KRS {
     const addKRS = `INSERT INTO KRS (Nilai, Nip, Nim, Id_MataKuliah) values (?,?,?,?)`;
     console.log('=================================');
     console.log('Lengkapi data di bawah ini :');
-    rl.question('Nilai :', (Nilai) => {
+    rl.question('Nim :', (Nim) => {
       rl.question('Nip:', (Nip) => {
-        rl.question('Nim :', (Nim) => {
+        console.log("Isi nilai dengan -, Nilai akan diisi di akhir semester")
+        rl.question('Nilai :', (Nilai) => {
           rl.question('Id_MataKuliah :', (Id_MataKuliah) => {
           db.get(addKRS, [Nilai, Nip, Nim, Id_MataKuliah], (err) => {
             if (err) {
@@ -426,13 +427,13 @@ class KRS {
     });
   }
   static delete() {
-    const deleteKRS = `DELETE FROM KRS WHERE KRS.Id_MataKuliah = ?`;
+    const deleteKRS = `DELETE FROM KRS WHERE KRS.Nim = ?`;
     console.log('=================================');
-    rl.question(`Masukan ID Mata Kuliah yang akan dihapus :`, (userInput) => {
+    rl.question(`Masukan Nim yang akan dihapus :`, (userInput) => {
       db.run(deleteKRS, [userInput], (err) => {
         if (!err) {
           console.log('=================================');
-          console.log(`KRS dengan ID_MataKuliah: ${userInput} telah dihapus`);
+          console.log(`KRS dengan Nim: ${userInput} telah dihapus`);
           KRS.read();
         }
       });
