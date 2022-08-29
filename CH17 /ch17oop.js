@@ -21,14 +21,18 @@ export default class MesinHitung {
 
     multiply(number) {
         this.numberold *= number
+        return this
     }
 
     divide(number) {
         this.numberold /= number
+        return this
     }
+
 
     square() {
         this.numberold = Math.pow(this.numberold, 2)
+        return this
     }
 
     root() {
